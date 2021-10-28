@@ -12,7 +12,8 @@ public enum ProblemType {
 	INCOMPREHENSIBLE_MESSAGE("/incomprehensible-message", "Incomprehensible message"),
 	RESOURCE_NOT_FOUND("/resource-not-found", "Resource not found"),
 	ENTITY_IN_USE("/entity-in-use", "Entity in use"),
-	ERROR_BUSINESS("/error-business", "Business rule violation");
+	ERROR_BUSINESS("/error-business", "Business rule violation"),
+	ERROR_FORMAT("/error-format", "Inalid format");
 	
 	private String title;
 	private String uri;

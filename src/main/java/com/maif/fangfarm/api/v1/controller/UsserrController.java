@@ -42,57 +42,56 @@ public class UsserrController implements UsserrControllerOpenApi {
 
 	@Autowired
 	private UsserrRepository usserrRepository;
-	
+
 	@Autowired
 	private RegisterUsserrService registerUsserr;
-	
+
 	@Autowired
 	private UsserrModelAssembler usserrModelAssembler;
-	
+
 	@Autowired
 	private UsserrInputDisassembler usserrInputDisassembler;
-	
+
 	@Autowired
 	private PagedResourcesAssembler<Usserr> pagedResourcesAssembler;
-	
+
 	@CheckSecurity.UsersGroupPermission.CanConsult
 	@Override
 	@GetMapping
 	public PagedModel<UsserrModel> list(UsserrFilter filter, Pageable pageable) {
-		
+
 		Pageable pageableTranslate = translatePageable(pageable);
 		Page<Usserr> usserrsPage = null;
-		
-		if(filter.getName()!=null || filter.getEmail()!=null ) {
+
+		if (filter.getName() != null || filter.getEmail() != null) {
 			usserrsPage = usserrRepository.findAll(UsserrSpecs.withNameOrEmailOrAnd(filter), pageableTranslate);
-		}
-		else
-		usserrsPage = usserrRepository.findAll(pageable);
-		
+		} else
+			usserrsPage = usserrRepository.findAll(pageable);
+
 		usserrsPage = new PageWrapper<>(usserrsPage, pageable);
-		
+
 		return pagedResourcesAssembler.toModel(usserrsPage, usserrModelAssembler);
 	}
-	
+
 	@CheckSecurity.UsersGroupPermission.CanConsult
 	@Override
 	@GetMapping("/{usserrId}")
 	public UsserrModel find(@PathVariable Long usserrId) {
 		Usserr usserr = registerUsserr.findOrFail(usserrId);
-		
+
 		return usserrModelAssembler.toModel(usserr);
 	}
-	
+
 	@Override
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public UsserrModel add(@RequestBody @Valid UsserrWithPasswordInput usserrInput) {
 		Usserr usserr = usserrInputDisassembler.toDomainObject(usserrInput);
 		usserr = registerUsserr.save(usserr);
-		 
+
 		return usserrModelAssembler.toModel(usserr);
 	}
-	
+
 	@CheckSecurity.UsersGroupPermission.CanEditUser
 	@Override
 	@PutMapping("/{usserrId}")
@@ -100,7 +99,7 @@ public class UsserrController implements UsserrControllerOpenApi {
 		Usserr usserrCorrent = registerUsserr.findOrFail(usserrId);
 		usserrInputDisassembler.copyToDomainObject(usserrInput, usserrCorrent);
 		usserrCorrent = registerUsserr.save(usserrCorrent);
-		
+
 		return usserrModelAssembler.toModel(usserrCorrent);
 	}
 
@@ -111,14 +110,10 @@ public class UsserrController implements UsserrControllerOpenApi {
 	public void alterPassword(@PathVariable Long usserrId, @RequestBody @Valid PasswordInput password) {
 		registerUsserr.editPassword(usserrId, password.getCurrentPassword(), password.getNewPassword());
 	}
-	
+
 	private Pageable translatePageable(Pageable apiPageable) {
-		var mapping = Map.of(
-				"id", "code",
-				"login", "login",
-				"email", "e-mail"
-			);
-		
+		var mapping = Map.of("id", "code", "login", "login", "email", "e-mail");
+
 		return PageableTranslator.translate(apiPageable, mapping);
 	}
 

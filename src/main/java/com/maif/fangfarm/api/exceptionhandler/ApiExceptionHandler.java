@@ -11,7 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.HttpMediaTypeNotAcceptableException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -254,4 +256,24 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 			.collect(Collectors.joining("."));
 	}
 	
+	// begin
+	@Override
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+	        HttpHeaders headers, HttpStatus status, WebRequest request) {
+		
+        StringBuilder sb = new StringBuilder();
+        for(ObjectError error : ex.getBindingResult().getAllErrors()) {
+        	//sb.append(ex.getBindingResult().getFieldError().getField());
+        	//sb.append(" ");
+            sb.append(error.getDefaultMessage());
+        }
+		
+		ProblemType problemType = ProblemType.ERROR_FORMAT;
+		
+		Problem problem = createProblemBuilder(status, problemType, sb.toString())
+				.userMessage(sb.toString())
+				.build();
+	    return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
+	}
+	// end
 }

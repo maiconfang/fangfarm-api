@@ -5698,7 +5698,49 @@ values (
 insert into model (id, name) values (1, 'Nissan');
 insert into model (id, name) values (2, 'BMW');
 insert into model (id, name) values (3, 'Volvo');
-
+insert into model (id ,name) values (4 ,'Acura');
+insert into model (id ,name) values (5 ,'Agrale');
+insert into model (id ,name) values (6 ,'Honda');
+insert into model (id ,name) values (7 ,'AM Gen');
+insert into model (id ,name) values (8 ,'Asia Motors');
+insert into model (id ,name) values (9 ,'ASTON MARTIN');
+insert into model (id ,name) values (10 ,'Audi');
+insert into model (id ,name) values (11 ,'Baby');
+insert into model (id ,name) values (12 ,'BMW');
+insert into model (id ,name) values (13 ,'BRM');
+insert into model (id ,name) values (14 ,'Bugre');
+insert into model (id ,name) values (15 ,'Cadillac');
+insert into model (id ,name) values (16 ,'CBT Jipe');
+insert into model (id ,name) values (17 ,'CHANA');
+insert into model (id ,name) values (18 ,'CHANGAN');
+insert into model (id ,name) values (19 ,'CHERY');
+insert into model (id ,name) values (20 ,'Chrysler');
+insert into model (id ,name) values (21 ,'Citroën');
+insert into model (id ,name) values (22 ,'Cross Lander');
+insert into model (id ,name) values (23 ,'Daewoo');
+insert into model (id ,name) values (24 ,'Dodge');
+insert into model (id ,name) values (25 ,'EFFA');
+insert into model (id ,name) values (26 ,'Engesa');
+insert into model (id ,name) values (27 ,'Envemo');
+insert into model (id ,name) values (28 ,'Ferrari');
+insert into model (id ,name) values (29 ,'Fiat');
+insert into model (id ,name) values (30 ,'Fibravan');
+insert into model (id ,name) values (31 ,'Ford');
+insert into model (id ,name) values (32 ,'FOTON');
+insert into model (id ,name) values (33 ,'Fyber');
+insert into model (id ,name) values (34 ,'GEELY');
+insert into model (id ,name) values (35 ,'GM - Chevrolet');
+insert into model (id ,name) values (36 ,'GREAT WALL');
+insert into model (id ,name) values (37 ,'Gurgel');
+insert into model (id ,name) values (38 ,'HAFEI');
+insert into model (id ,name) values (39 ,'HITECH ELECTRIC');
+insert into model (id ,name) values (41 ,'Hyundai');
+insert into model (id ,name) values (42 ,'Isuzu');
+insert into model (id ,name) values (43 ,'IVECO');
+insert into model (id ,name) values (44 ,'JAC');
+insert into model (id ,name) values (45 ,'Jaguar');
+insert into model (id ,name) values (46 ,'Daihatsu');
+insert into model (id ,name) values (47 ,'Alfa Romeo');
 
 insert into employee (id, name, rg, cpf, dt_update, dt_create, address_city_id, address_zip, address_type, address_number, address_block) 
 values 

@@ -11,7 +11,7 @@ import lombok.Setter;
 public class UsserrWithPasswordInput extends UsserrInput {
 
 	@ApiModelProperty(example = "123", required = true)
-	@NotBlank
+	@NotBlank (message = "{usserrWithPasswordInput.password.not.blank}")
 	private String password;
 	
 }

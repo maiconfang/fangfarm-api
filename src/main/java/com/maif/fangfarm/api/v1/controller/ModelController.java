@@ -65,7 +65,7 @@ public class ModelController implements ModelControllerOpenApi {
 		if (filter.getName() != null) {
 			modelsPage = modelRepository.findAll(ModelSpecs.withName(filter), pageableTranslate);
 		} else
-			modelsPage = modelRepository.findAll(pageable);
+			modelsPage = modelRepository.findAllByOrderByNameAsc(pageable);
 
 		modelsPage = new PageWrapper<>(modelsPage, pageable);
 
@@ -120,5 +120,4 @@ public class ModelController implements ModelControllerOpenApi {
 		return PageableTranslator.translate(apiPageable, mapping);
 	}
 
-	
 }
