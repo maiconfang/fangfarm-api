@@ -20,7 +20,7 @@ public class CityInput {
 	private String name;
 	
 	@Valid
-	@NotNull
+	@NotNull (message = "{cityInput.state.not.null}")
 	private StateIdInput state;
 
 }
