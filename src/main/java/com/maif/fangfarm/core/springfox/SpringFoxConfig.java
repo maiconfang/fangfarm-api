@@ -24,16 +24,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.fasterxml.classmate.TypeResolver;
 import com.maif.fangfarm.api.exceptionhandler.Problem;
 import com.maif.fangfarm.api.v1.model.CityModel;
-import com.maif.fangfarm.api.v1.model.StateModel;
+import com.maif.fangfarm.api.v1.model.EmployeeModel;
 import com.maif.fangfarm.api.v1.model.GroupppModel;
 import com.maif.fangfarm.api.v1.model.PermissionModel;
+import com.maif.fangfarm.api.v1.model.StateModel;
 import com.maif.fangfarm.api.v1.model.UsserrModel;
 import com.maif.fangfarm.api.v1.openapi.model.CitiesModelOpenApi;
-import com.maif.fangfarm.api.v1.openapi.model.StatesModelOpenApi;
+import com.maif.fangfarm.api.v1.openapi.model.EmployeesModelOpenApi;
 import com.maif.fangfarm.api.v1.openapi.model.GroupsModelOpenApi;
 import com.maif.fangfarm.api.v1.openapi.model.LinksModelOpenApi;
 import com.maif.fangfarm.api.v1.openapi.model.PageableModelOpenApi;
 import com.maif.fangfarm.api.v1.openapi.model.PermissoesModelOpenApi;
+import com.maif.fangfarm.api.v1.openapi.model.StatesModelOpenApi;
 import com.maif.fangfarm.api.v1.openapi.model.UsserrsModelOpenApi;
 
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
@@ -95,6 +97,10 @@ public class SpringFoxConfig implements WebMvcConfigurer {
 						StatesModelOpenApi.class))
 				
 				.alternateTypeRules(AlternateTypeRules.newRule(
+						typeResolver.resolve(CollectionModel.class, EmployeeModel.class),
+						EmployeesModelOpenApi.class))
+				
+				.alternateTypeRules(AlternateTypeRules.newRule(
 						typeResolver.resolve(CollectionModel.class, GroupppModel.class),
 						GroupsModelOpenApi.class))
 				
@@ -113,6 +119,7 @@ public class SpringFoxConfig implements WebMvcConfigurer {
 				.tags(new Tag("Cities", "Manager the cities"),
 						new Tag("Groups", "Manager the groups of users"),
 						new Tag("States", "Manager the states"),
+						new Tag("Employees", "Manager the employees"),
 						new Tag("Users", "Manager the users"),
 						new Tag("Permissions", "Manger the permissions"));
 	}

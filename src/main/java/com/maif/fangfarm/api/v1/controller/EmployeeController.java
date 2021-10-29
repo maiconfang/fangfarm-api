@@ -37,7 +37,7 @@ import com.maif.fangfarm.domain.service.RegisterEmployeeService;
 import com.maif.fangfarm.infrastructure.repository.spec.EmployeeSpecs;
 
 @RestController
-@RequestMapping(path = "/v1/employee", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/v1/employees", produces = MediaType.APPLICATION_JSON_VALUE)
 public class EmployeeController implements EmployeeControllerOpenApi {
 
 	@Autowired

@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class FuncionarioIdInput {
+public class EmployeeIdInput {
 
 	@ApiModelProperty(example = "1", required = true)
 	@NotNull
