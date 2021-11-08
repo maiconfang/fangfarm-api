@@ -112,7 +112,7 @@ public class GroupController implements GroupControllerOpenApi {
 	@Override
 	@DeleteMapping("/{groupId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable Long groupId) {
+	public void remove(@PathVariable Long groupId) {
 		
 		String nameGroup = findGroup(groupId).getName();
 		

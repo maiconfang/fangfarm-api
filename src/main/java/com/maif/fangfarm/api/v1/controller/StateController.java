@@ -130,7 +130,7 @@ public class StateController implements StateControllerOpenApi {
 	@Override
 	@DeleteMapping("/{stateId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable Long stateId) {
+	public void remove(@PathVariable Long stateId) {
 		
 		State state = registerState.findOrFail(stateId);
 		String nameState = state.getName();

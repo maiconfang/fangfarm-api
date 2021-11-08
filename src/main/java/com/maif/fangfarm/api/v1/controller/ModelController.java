@@ -110,7 +110,7 @@ public class ModelController implements ModelControllerOpenApi {
 	@Override
 	@DeleteMapping("/{modelId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable Long modelId) {
+	public void remove(@PathVariable Long modelId) {
 		registerModel.delete(modelId);
 	}
 

@@ -58,7 +58,7 @@ public interface StateControllerOpenApi {
 		@ApiResponse(code = 204, message = "State removed"),
 		@ApiResponse(code = 404, message = "State not found", response = Problem.class)
 	})
-	void remover(
+	void remove(
 			@ApiParam(value = "ID of the state", example = "1", required = true)
 			Long stateId);
 

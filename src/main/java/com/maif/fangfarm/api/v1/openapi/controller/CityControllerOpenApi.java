@@ -59,7 +59,7 @@ public interface CityControllerOpenApi {
 		@ApiResponse(code = 204, message = "City removed"),
 		@ApiResponse(code = 404, message = "City not found", response = Problem.class)
 	})
-	void remover(
+	void remove(
 			@ApiParam(value = "ID of a city", example = "1", required = true)
 			Long cityId);
 	

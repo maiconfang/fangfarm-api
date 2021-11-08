@@ -54,7 +54,7 @@ public interface ModelControllerOpenApi {
 		@ApiResponse(code = 204, message = "Model removed"),
 		@ApiResponse(code = 404, message = "Model not found", response = Problem.class)
 	})
-	void remover(
+	void remove(
 			@ApiParam(value = "ID of model", example = "1", required = true)
 			Long modelId);
 

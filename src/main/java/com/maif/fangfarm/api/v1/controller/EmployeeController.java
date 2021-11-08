@@ -119,7 +119,7 @@ public class EmployeeController implements EmployeeControllerOpenApi {
 	@Override
 	@DeleteMapping("/{employeeId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable Long employeeId) {
+	public void remove(@PathVariable Long employeeId) {
 		registerEmployee.delete(employeeId);	
 	}
 	

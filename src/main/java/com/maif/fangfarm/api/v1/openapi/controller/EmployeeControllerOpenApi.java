@@ -54,7 +54,7 @@ public interface EmployeeControllerOpenApi {
 		@ApiResponse(code = 204, message = "Employee removed"),
 		@ApiResponse(code = 404, message = "Employee not found", response = Problem.class)
 	})
-	void remover(
+	void remove(
 			@ApiParam(value = "ID of employee", example = "1", required = true)
 			Long employeeId);
 	

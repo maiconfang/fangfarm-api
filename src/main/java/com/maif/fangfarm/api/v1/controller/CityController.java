@@ -147,7 +147,7 @@ public class CityController implements CityControllerOpenApi {
 	@Override
 	@DeleteMapping("/{cityId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable Long cityId) {
+	public void remove(@PathVariable Long cityId) {
 		
 		City city = registerCity.findOrFail(cityId);
 		String nameCity = city.getName();
