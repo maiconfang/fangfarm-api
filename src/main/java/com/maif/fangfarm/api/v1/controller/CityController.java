@@ -1,7 +1,7 @@
 package com.maif.fangfarm.api.v1.controller;
 
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,15 +32,13 @@ import com.maif.fangfarm.api.v1.openapi.controller.CityControllerOpenApi;
 import com.maif.fangfarm.core.data.PageWrapper;
 import com.maif.fangfarm.core.data.PageableTranslator;
 import com.maif.fangfarm.core.security.CheckSecurity;
-import com.maif.fangfarm.domain.exception.StateNotFoundException;
 import com.maif.fangfarm.domain.exception.BusinessException;
+import com.maif.fangfarm.domain.exception.StateNotFoundException;
 import com.maif.fangfarm.domain.filter.CityFilter;
 import com.maif.fangfarm.domain.model.City;
 import com.maif.fangfarm.domain.repository.CityRepository;
 import com.maif.fangfarm.domain.service.RegisterCityService;
 import com.maif.fangfarm.infrastructure.repository.spec.CitySpecs;
-
-import org.springframework.hateoas.CollectionModel;
 
 @RestController
 @RequestMapping(path = "/v1/cities", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -78,6 +77,21 @@ public class CityController implements CityControllerOpenApi {
 		citiesPage = new PageWrapper<>(citiesPage, pageable);
 		
 		return pagedResourcesAssembler.toModel(citiesPage, cityModelAssembler);
+	}
+	
+	@CheckSecurity.Cities.CanConsult
+	@GetMapping("/noPagination")
+	public CollectionModel<CityModel> listNoPagination(CityFilter filter) {
+		
+		List<City> allCities;
+		
+		if(filter.getName()!=null ) {
+			allCities = cityRepository.findAll(CitySpecs.withFilter(filter));
+		}
+		else
+			allCities = cityRepository.findAll();
+		
+		return cityModelAssembler.toCollectionModel(allCities);
 	}
 	
 	@CheckSecurity.Cities.CanConsult
