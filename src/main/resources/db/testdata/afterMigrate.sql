@@ -10,6 +10,7 @@ delete from usserr;
 delete from usserr_grouppp;
 delete from oauth_client_details;
 delete from employee;
+delete from brand;
 
 set foreign_key_checks = 1;
 
@@ -20,6 +21,131 @@ alter table grouppp auto_increment = 1;
 alter table permission auto_increment = 1;
 alter table usserr auto_increment = 1;
 alter table employee auto_increment = 1;
+alter table brand auto_increment = 1;
+
+
+insert into permission (id, name, description) values (3, 'EDIT_CITIES', 'Allow to create or edit cities');
+insert into permission (id, name, description) values (4, 'EDIT_STATES', 'Allow to create or edit states');
+insert into permission (id, name, description) values (5, 'CONSULT_USSERRS_GROUPS_PERMISSIONS', 'Allow to consult users, groups and permissions');
+insert into permission (id, name, description) values (6, 'EDIT_USSERRS_GROUPS_PERMISSIONS', 'Allow to create or edit users, groups and permissions');
+insert into permission (id, name, description) values (10, 'VIEW_REPORTS', 'Allow to view reports');
+insert into permission (id, name, description) values (11, 'EDIT_MODELS', 'Allow to create or edit  models');
+insert into permission (id, name, description) values (12, 'EDIT_BRANDS', 'Allow to create or edit  brands');
+
+
+insert into grouppp (id, name) values (1, 'Manager'), (2, 'Seller'), (3, 'Secretary'), (4, 'Register');
+
+
+# Add all permissions in manager grouppp
+insert into grouppp_permission (grouppp_id, permission_id)
+select 1, id from permission;
+
+# Add permissions in seller's grouppp
+insert into grouppp_permission (grouppp_id, permission_id)
+select 2, id from permission where name like 'CONSULTAR_%';
+
+
+# Add permissions in helper grouppp
+insert into grouppp_permission (grouppp_id, permission_id)
+select 3, id from permission where name like 'CONSULTAR_%';
+
+
+insert into usserr (id, name, email, password, dt_create, dt_update) values
+(1, 'João da Silva', 'joao.ger@maiffarm.com.br', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp, utc_timestamp),
+(2, 'Maria Joaquina', 'maria.vnd@maiffarm.com.br', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp, utc_timestamp),
+(3, 'José Souza', 'jose.aux@maiffarm.com.br', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp, utc_timestamp),
+(4, 'Sebastião Martins', 'sebastiao.cad@maiffarm.com.br', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp, utc_timestamp),
+(5, 'Manoel Lima', 'manoel.loja@gmail.com', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp, utc_timestamp),
+(6, 'Débora Mendonça', 'testesmaiconfang@gmail.com', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp, utc_timestamp),
+(7, 'Carlos Lima', 'email.teste.aw+carlos@gmail.com', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp, utc_timestamp);
+
+insert into usserr_grouppp (usserr_id, grouppp_id) values (1, 1), (1, 2), (2, 2), (3, 3), (4, 4);
+
+
+insert into oauth_client_details (
+  client_id, resource_ids, client_secret, 
+  scope, authorized_grant_types, web_server_redirect_uri, authorities,
+  access_token_validity, refresh_token_validity, autoapprove
+)
+values (
+  'maiffarm-web', null, '$2y$12$w3igMjsfS5XoAYuowoH3C.54vRFWlcXSHLjX7MwF990Kc2KKKh72e',
+  'READ,WRITE', 'password', null, null,
+  60 * 60 * 6, 60 * 24 * 60 * 60, null
+);
+
+insert into oauth_client_details (
+  client_id, resource_ids, client_secret, 
+  scope, authorized_grant_types, web_server_redirect_uri, authorities,
+  access_token_validity, refresh_token_validity, autoapprove
+)
+values (
+  'foodanalytics', null, '$2y$12$fahbH37S2pyk1RPuIHKP.earzFmgAJJGo26rE.59vf4wwiiTKHnzO',
+  'READ,WRITE', 'authorization_code', 'http://www.foodanalytics.local:8082', null,
+  null, null, null
+);
+
+insert into oauth_client_details (
+  client_id, resource_ids, client_secret, 
+  scope, authorized_grant_types, web_server_redirect_uri, authorities,
+  access_token_validity, refresh_token_validity, autoapprove
+)
+values (
+  'billing', null, '$2y$12$fHixriC7yXX/i1/CmpnGH.RFyK/l5YapLCFOEbIktONjE8ZDykSnu',
+  'READ,WRITE', 'client_credentials', null, 'VIEW_REPORTS',
+  null, null, null
+);
+
+insert into model (id, name) values (1, 'Nissan');
+insert into model (id, name) values (2, 'BMW');
+insert into model (id, name) values (3, 'Volvo');
+insert into model (id ,name) values (4 ,'Acura');
+insert into model (id ,name) values (5 ,'Agrale');
+insert into model (id ,name) values (6 ,'Honda');
+insert into model (id ,name) values (7 ,'AM Gen');
+insert into model (id ,name) values (8 ,'Asia Motors');
+insert into model (id ,name) values (9 ,'ASTON MARTIN');
+insert into model (id ,name) values (10 ,'Audi');
+insert into model (id ,name) values (11 ,'Baby');
+insert into model (id ,name) values (12 ,'BMW');
+insert into model (id ,name) values (13 ,'BRM');
+insert into model (id ,name) values (14 ,'Bugre');
+insert into model (id ,name) values (15 ,'Cadillac');
+insert into model (id ,name) values (16 ,'CBT Jipe');
+insert into model (id ,name) values (17 ,'CHANA');
+insert into model (id ,name) values (18 ,'CHANGAN');
+insert into model (id ,name) values (19 ,'CHERY');
+insert into model (id ,name) values (20 ,'Chrysler');
+insert into model (id ,name) values (21 ,'Citroën');
+insert into model (id ,name) values (22 ,'Cross Lander');
+insert into model (id ,name) values (23 ,'Daewoo');
+insert into model (id ,name) values (24 ,'Dodge');
+insert into model (id ,name) values (25 ,'EFFA');
+insert into model (id ,name) values (26 ,'Engesa');
+insert into model (id ,name) values (27 ,'Envemo');
+insert into model (id ,name) values (28 ,'Ferrari');
+insert into model (id ,name) values (29 ,'Fiat');
+insert into model (id ,name) values (30 ,'Fibravan');
+insert into model (id ,name) values (31 ,'Ford');
+insert into model (id ,name) values (32 ,'FOTON');
+insert into model (id ,name) values (33 ,'Fyber');
+insert into model (id ,name) values (34 ,'GEELY');
+insert into model (id ,name) values (35 ,'GM - Chevrolet');
+insert into model (id ,name) values (36 ,'GREAT WALL');
+insert into model (id ,name) values (37 ,'Gurgel');
+insert into model (id ,name) values (38 ,'HAFEI');
+insert into model (id ,name) values (39 ,'HITECH ELECTRIC');
+insert into model (id ,name) values (41 ,'Hyundai');
+insert into model (id ,name) values (42 ,'Isuzu');
+insert into model (id ,name) values (43 ,'IVECO');
+insert into model (id ,name) values (44 ,'JAC');
+insert into model (id ,name) values (45 ,'Jaguar');
+insert into model (id ,name) values (46 ,'Daihatsu');
+insert into model (id ,name) values (47 ,'Alfa Romeo');
+
+INSERT INTO brand (id, name, model_id) values (1, 'Tiida', 1);
+INSERT INTO brand (id, name, model_id) values (2, 'Frontier', 1);
+INSERT INTO brand (id, name, model_id) values (3, 'Versa', 1);
+INSERT INTO brand (id, name, model_id) values (4, 'I8', 2);
 
 
 INSERT INTO `state` (`id`, `name`, `fs`) VALUES
@@ -5620,128 +5746,6 @@ INSERT INTO `city` (`id`, `name`, `state_id`) VALUES
 (5564, 'Xambioá', 27);
 
 
-
-
-
-
-insert into permission (id, name, description) values (3, 'EDIT_CITIES', 'Allow to create or edit cities');
-insert into permission (id, name, description) values (4, 'EDIT_STATES', 'Allow to create or edit states');
-insert into permission (id, name, description) values (5, 'CONSULT_USSERRS_GROUPS_PERMISSIONS', 'Allow to consult users, groups and permissions');
-insert into permission (id, name, description) values (6, 'EDIT_USSERRS_GROUPS_PERMISSIONS', 'Allow to create or edit users, groups and permissions');
-insert into permission (id, name, description) values (10, 'VIEW_REPORTS', 'Allow to view reports');
-insert into permission (id, name, description) values (11, 'EDIT_MODELS', 'Allow to create or edit  models');
-
-
-
-insert into grouppp (id, name) values (1, 'Gerente'), (2, 'Vendedor'), (3, 'Secretária'), (4, 'Cadastrador');
-
-
-# Adiciona todas as permissoes no grouppp do gerente
-insert into grouppp_permission (grouppp_id, permission_id)
-select 1, id from permission;
-
-# Adiciona permissoes no grouppp do vendedor
-insert into grouppp_permission (grouppp_id, permission_id)
-select 2, id from permission where name like 'CONSULTAR_%';
-
-
-# Adiciona permissoes no grouppp do auxiliar
-insert into grouppp_permission (grouppp_id, permission_id)
-select 3, id from permission where name like 'CONSULTAR_%';
-
-
-insert into usserr (id, name, email, password, dt_create, dt_update) values
-(1, 'João da Silva', 'joao.ger@maiffarm.com.br', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp, utc_timestamp),
-(2, 'Maria Joaquina', 'maria.vnd@maiffarm.com.br', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp, utc_timestamp),
-(3, 'José Souza', 'jose.aux@maiffarm.com.br', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp, utc_timestamp),
-(4, 'Sebastião Martins', 'sebastiao.cad@maiffarm.com.br', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp, utc_timestamp),
-(5, 'Manoel Lima', 'manoel.loja@gmail.com', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp, utc_timestamp),
-(6, 'Débora Mendonça', 'testesmaiconfang@gmail.com', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp, utc_timestamp),
-(7, 'Carlos Lima', 'email.teste.aw+carlos@gmail.com', '$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W', utc_timestamp, utc_timestamp);
-
-insert into usserr_grouppp (usserr_id, grouppp_id) values (1, 1), (1, 2), (2, 2), (3, 3), (4, 4);
-
-
-insert into oauth_client_details (
-  client_id, resource_ids, client_secret, 
-  scope, authorized_grant_types, web_server_redirect_uri, authorities,
-  access_token_validity, refresh_token_validity, autoapprove
-)
-values (
-  'maiffarm-web', null, '$2y$12$w3igMjsfS5XoAYuowoH3C.54vRFWlcXSHLjX7MwF990Kc2KKKh72e',
-  'READ,WRITE', 'password', null, null,
-  60 * 60 * 6, 60 * 24 * 60 * 60, null
-);
-
-insert into oauth_client_details (
-  client_id, resource_ids, client_secret, 
-  scope, authorized_grant_types, web_server_redirect_uri, authorities,
-  access_token_validity, refresh_token_validity, autoapprove
-)
-values (
-  'foodanalytics', null, '$2y$12$fahbH37S2pyk1RPuIHKP.earzFmgAJJGo26rE.59vf4wwiiTKHnzO',
-  'READ,WRITE', 'authorization_code', 'http://www.foodanalytics.local:8082', null,
-  null, null, null
-);
-
-insert into oauth_client_details (
-  client_id, resource_ids, client_secret, 
-  scope, authorized_grant_types, web_server_redirect_uri, authorities,
-  access_token_validity, refresh_token_validity, autoapprove
-)
-values (
-  'billing', null, '$2y$12$fHixriC7yXX/i1/CmpnGH.RFyK/l5YapLCFOEbIktONjE8ZDykSnu',
-  'READ,WRITE', 'client_credentials', null, 'VIEW_REPORTS',
-  null, null, null
-);
-
-insert into model (id, name) values (1, 'Nissan');
-insert into model (id, name) values (2, 'BMW');
-insert into model (id, name) values (3, 'Volvo');
-insert into model (id ,name) values (4 ,'Acura');
-insert into model (id ,name) values (5 ,'Agrale');
-insert into model (id ,name) values (6 ,'Honda');
-insert into model (id ,name) values (7 ,'AM Gen');
-insert into model (id ,name) values (8 ,'Asia Motors');
-insert into model (id ,name) values (9 ,'ASTON MARTIN');
-insert into model (id ,name) values (10 ,'Audi');
-insert into model (id ,name) values (11 ,'Baby');
-insert into model (id ,name) values (12 ,'BMW');
-insert into model (id ,name) values (13 ,'BRM');
-insert into model (id ,name) values (14 ,'Bugre');
-insert into model (id ,name) values (15 ,'Cadillac');
-insert into model (id ,name) values (16 ,'CBT Jipe');
-insert into model (id ,name) values (17 ,'CHANA');
-insert into model (id ,name) values (18 ,'CHANGAN');
-insert into model (id ,name) values (19 ,'CHERY');
-insert into model (id ,name) values (20 ,'Chrysler');
-insert into model (id ,name) values (21 ,'Citroën');
-insert into model (id ,name) values (22 ,'Cross Lander');
-insert into model (id ,name) values (23 ,'Daewoo');
-insert into model (id ,name) values (24 ,'Dodge');
-insert into model (id ,name) values (25 ,'EFFA');
-insert into model (id ,name) values (26 ,'Engesa');
-insert into model (id ,name) values (27 ,'Envemo');
-insert into model (id ,name) values (28 ,'Ferrari');
-insert into model (id ,name) values (29 ,'Fiat');
-insert into model (id ,name) values (30 ,'Fibravan');
-insert into model (id ,name) values (31 ,'Ford');
-insert into model (id ,name) values (32 ,'FOTON');
-insert into model (id ,name) values (33 ,'Fyber');
-insert into model (id ,name) values (34 ,'GEELY');
-insert into model (id ,name) values (35 ,'GM - Chevrolet');
-insert into model (id ,name) values (36 ,'GREAT WALL');
-insert into model (id ,name) values (37 ,'Gurgel');
-insert into model (id ,name) values (38 ,'HAFEI');
-insert into model (id ,name) values (39 ,'HITECH ELECTRIC');
-insert into model (id ,name) values (41 ,'Hyundai');
-insert into model (id ,name) values (42 ,'Isuzu');
-insert into model (id ,name) values (43 ,'IVECO');
-insert into model (id ,name) values (44 ,'JAC');
-insert into model (id ,name) values (45 ,'Jaguar');
-insert into model (id ,name) values (46 ,'Daihatsu');
-insert into model (id ,name) values (47 ,'Alfa Romeo');
-
 insert into employee (id, name, rg, cpf, dt_update, dt_create, address_city_id, address_zip, address_type, address_number, address_complement, address_block) 
 values 
 (1, 'Beatriz', '19.117.826-3' ,'818.554.847-14', utc_timestamp, '2020-02-01 02:20:10', 3050, '83323-240', 'Rua Vinte e Dois de Abril', '1000', 'Próximo ao mercado', 'Centro');
@@ -5753,5 +5757,4 @@ values
 insert into employee (id, name, rg, cpf, dt_update, dt_create, address_city_id, address_zip, address_type, address_number, address_complement, address_block) 
 values 
 (3, 'Katia', '89.148.559-2' ,'577.863.756-00', utc_timestamp, '2020-02-01 02:20:10', 4400, '69301-410', 'Avenida Capitão Júlio Bezerra', '741', 'Em frente ao colégio', 'Centro');
-
 

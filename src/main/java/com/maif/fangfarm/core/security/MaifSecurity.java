@@ -61,6 +61,10 @@ public class MaifSecurity {
 		return isAutenticado() && hasReadingScope();
 	}
 	
+	public boolean canConsultBrands() {
+		return isAutenticado() && hasReadingScope();
+	}
+	
 	public boolean canConsultEmployees() {
 		return isAutenticado() && hasReadingScope();
 	}

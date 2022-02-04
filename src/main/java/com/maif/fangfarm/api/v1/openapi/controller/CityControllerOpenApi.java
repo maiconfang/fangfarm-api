@@ -22,7 +22,7 @@ public interface CityControllerOpenApi {
 	PagedModel<CityModel> list(CityFilter filter, Pageable pageable);
 	
 	@ApiOperation("List the cities")
-	CollectionModel<CityModel> list(Long stateId);
+	CollectionModel<CityModel> list(Long cityId);
 	
 	
 	@ApiOperation("Find a city by ID")

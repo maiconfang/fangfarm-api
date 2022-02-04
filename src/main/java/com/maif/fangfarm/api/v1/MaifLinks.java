@@ -10,15 +10,16 @@ import org.springframework.hateoas.TemplateVariable.VariableType;
 import org.springframework.hateoas.TemplateVariables;
 import org.springframework.stereotype.Component;
 
+import com.maif.fangfarm.api.v1.controller.BrandController;
 import com.maif.fangfarm.api.v1.controller.CityController;
-import com.maif.fangfarm.api.v1.controller.StateController;
 import com.maif.fangfarm.api.v1.controller.EmployeeController;
 import com.maif.fangfarm.api.v1.controller.GroupController;
 import com.maif.fangfarm.api.v1.controller.GroupPermissionController;
 import com.maif.fangfarm.api.v1.controller.ModelController;
 import com.maif.fangfarm.api.v1.controller.PermissionController;
-import com.maif.fangfarm.api.v1.controller.UsserrController;
+import com.maif.fangfarm.api.v1.controller.StateController;
 import com.maif.fangfarm.api.v1.controller.UserGroupController;
+import com.maif.fangfarm.api.v1.controller.UsserrController;
 
 @Component
 public class MaifLinks {
@@ -164,6 +165,25 @@ public class MaifLinks {
 
 	public Link linkToEmployees() {
 		return linkToEmployees(IanaLinkRelations.SELF.value());
+	}
+	
+	
+	
+	public Link linkToBrand(Long brandId, String rel) {
+		return linkTo(methodOn(BrandController.class)
+				.find(brandId)).withRel(rel);
+	}
+	
+	public Link linkToBrand(Long brandId) {
+		return linkToBrand(brandId, IanaLinkRelations.SELF.value());
+	}
+	
+	public Link linkToBrand(String rel) {
+		return linkTo(BrandController.class).withRel(rel);
+	}
+	
+	public Link linkToBrands() {
+		return linkToBrand(IanaLinkRelations.SELF.value());
 	}
 	
 }

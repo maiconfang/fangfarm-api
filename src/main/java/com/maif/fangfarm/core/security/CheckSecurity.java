@@ -25,6 +25,20 @@ public @interface CheckSecurity {
 		
 	}
 	
+	public @interface Brands {
+		
+		@PreAuthorize("hasAuthority('SCOPE_WRITE') and hasAuthority('EDIT_BRANDS')")
+		@Retention(RUNTIME)
+		@Target(METHOD)
+		public @interface CanEdit { }
+
+		@PreAuthorize("@maifSecurity.canConsultBrands()")
+		@Retention(RUNTIME)
+		@Target(METHOD)
+		public @interface CanConsult { }
+		
+	}
+	
 	public @interface States {
 		
 		@PreAuthorize("hasAuthority('SCOPE_WRITE') and hasAuthority('EDIT_STATES')")
