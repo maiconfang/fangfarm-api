@@ -1,5 +1,6 @@
 package com.maif.fangfarm.api.v1.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -118,6 +120,21 @@ public class ModelController implements ModelControllerOpenApi {
 		var mapping = Map.of("id", "code", "name", "name");
 
 		return PageableTranslator.translate(apiPageable, mapping);
+	}
+	
+	@CheckSecurity.Models.CanConsult
+	@GetMapping("/noPagination")
+	public CollectionModel<ModelModel> listNoPagination(ModelFilter filter) {
+		
+		List<Model> allModels;
+		
+		if(filter.getName()!=null ) {
+			allModels = modelRepository.findAll(ModelSpecs.withFilter(filter));
+		}
+		else
+			allModels = modelRepository.findAll();
+		
+		return modelModelAssembler.toCollectionModel(allModels);
 	}
 
 }

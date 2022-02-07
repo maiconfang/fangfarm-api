@@ -106,7 +106,6 @@ insert into model (id ,name) values (8 ,'Asia Motors');
 insert into model (id ,name) values (9 ,'ASTON MARTIN');
 insert into model (id ,name) values (10 ,'Audi');
 insert into model (id ,name) values (11 ,'Baby');
-insert into model (id ,name) values (12 ,'BMW');
 insert into model (id ,name) values (13 ,'BRM');
 insert into model (id ,name) values (14 ,'Bugre');
 insert into model (id ,name) values (15 ,'Cadillac');

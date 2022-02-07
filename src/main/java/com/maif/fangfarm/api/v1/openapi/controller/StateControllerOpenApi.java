@@ -22,7 +22,7 @@ public interface StateControllerOpenApi {
 	PagedModel<StateModel> list(StateFilter filter, Pageable pageable);
 	
 	@ApiOperation("List the states without pagination")
-	CollectionModel<StateModel> list(StateFilter filter);
+	CollectionModel<StateModel> listNoPagination(StateFilter filter);
 
 	@ApiOperation("Find the state by ID")
 	@ApiResponses({

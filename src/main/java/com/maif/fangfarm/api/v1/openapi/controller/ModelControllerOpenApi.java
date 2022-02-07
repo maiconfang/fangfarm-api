@@ -1,6 +1,7 @@
 package com.maif.fangfarm.api.v1.openapi.controller;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.PagedModel;
 
 import com.maif.fangfarm.api.exceptionhandler.Problem;
@@ -19,6 +20,9 @@ public interface ModelControllerOpenApi {
 
 	@ApiOperation("List of models")
 	PagedModel<ModelModel> list(ModelFilter filter, Pageable pageable);
+	
+	@ApiOperation("List the models without pagination")
+	CollectionModel<ModelModel> listNoPagination(ModelFilter filter);
 
 	@ApiOperation("Find a model by ID")
 	@ApiResponses({

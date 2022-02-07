@@ -77,9 +77,8 @@ public class StateController implements StateControllerOpenApi {
 	}
 	
 	@CheckSecurity.States.CanConsult
-	@Override
 	@GetMapping("/noPagination")
-	public CollectionModel<StateModel> list(StateFilter filter) {
+	public CollectionModel<StateModel> listNoPagination(StateFilter filter) {
 		
 		List<State> allStates;
 		
