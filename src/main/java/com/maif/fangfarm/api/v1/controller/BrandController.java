@@ -171,5 +171,6 @@ public class BrandController implements BrandControllerOpenApi {
 
 		return PageableTranslator.translate(apiPageable, mapping);
 	}
+	
 
 }
