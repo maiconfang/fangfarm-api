@@ -11,6 +11,7 @@ delete from usserr_grouppp;
 delete from oauth_client_details;
 delete from employee;
 delete from brand;
+delete from vehicle;
 
 set foreign_key_checks = 1;
 
@@ -22,6 +23,7 @@ alter table permission auto_increment = 1;
 alter table usserr auto_increment = 1;
 alter table employee auto_increment = 1;
 alter table brand auto_increment = 1;
+alter table vehicle auto_increment = 1;
 
 
 insert into permission (id, name, description) values (3, 'EDIT_CITIES', 'Allow to create or edit cities');
@@ -31,6 +33,7 @@ insert into permission (id, name, description) values (6, 'EDIT_USSERRS_GROUPS_P
 insert into permission (id, name, description) values (10, 'VIEW_REPORTS', 'Allow to view reports');
 insert into permission (id, name, description) values (11, 'EDIT_MODELS', 'Allow to create or edit  models');
 insert into permission (id, name, description) values (12, 'EDIT_BRANDS', 'Allow to create or edit  brands');
+insert into permission (id, name, description) values (13, 'EDIT_VEHICLES', 'Allow to create or edit  vehicles');
 
 
 insert into grouppp (id, name) values (1, 'Manager'), (2, 'Seller'), (3, 'Secretary'), (4, 'Register');
@@ -146,6 +149,8 @@ INSERT INTO brand (id, name, model_id) values (2, 'Frontier', 1);
 INSERT INTO brand (id, name, model_id) values (3, 'Versa', 1);
 INSERT INTO brand (id, name, model_id) values (4, 'I8', 2);
 
+INSERT INTO vehicle (id, color, `year`, license_plate, fuel, description, dt_create, dt_update, brand_id) VALUES(1, 'Green', '2021-2022', 'MAIF-123', 'Diesel', 'Versatile MFWD', utc_timestamp, '2022-02-10 09:20:10', 1);
+INSERT INTO vehicle (id, color, `year`, license_plate, fuel, description, dt_create, dt_update, brand_id) VALUES(2, 'Yellow', '2021-2022', 'JD-4854', 'Diesel', 'John Deere', utc_timestamp, '2022-02-10 09:20:10', 2);
 
 INSERT INTO `state` (`id`, `name`, `fs`) VALUES
 (1, 'Acre', 'AC'),

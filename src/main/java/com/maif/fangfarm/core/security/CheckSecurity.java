@@ -107,5 +107,19 @@ public @interface CheckSecurity {
 		
 	}
 	
+	public @interface Vehicles {
+		
+		@PreAuthorize("hasAuthority('SCOPE_WRITE') and hasAuthority('EDIT_VEHICLES')")
+		@Retention(RUNTIME)
+		@Target(METHOD)
+		public @interface CanEdit { }
+
+		@PreAuthorize("@maifSecurity.canConsultVehicles()")
+		@Retention(RUNTIME)
+		@Target(METHOD)
+		public @interface CanConsult { }
+		
+	}
+	
 	
 }

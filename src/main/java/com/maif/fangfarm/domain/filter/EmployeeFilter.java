@@ -11,13 +11,13 @@ public class EmployeeFilter {
 	@ApiModelProperty(example = "1", value = "ID of employee of search")
 	private Long employeeId;
 	
-	@ApiModelProperty(example = "1", value = "Nome of employee of search")
+	@ApiModelProperty(example = "Maicon", value = "Name of employee of search")
 	private String name;
 	
-	@ApiModelProperty(example = "1", value = "RG of employee of search")
+	@ApiModelProperty(example = "87455883", value = "RG of employee of search")
 	private String rg;
 	
-	@ApiModelProperty(example = "1", value = "CPF of employee of search")
+	@ApiModelProperty(example = "548421844", value = "CPF of employee of search")
 	private String cpf;
 	
 	

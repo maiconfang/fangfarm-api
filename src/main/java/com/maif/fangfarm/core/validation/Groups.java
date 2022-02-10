@@ -8,4 +8,6 @@ public interface Groups {
 	
 	public interface EmployeeId {}
 	
+	public interface BrandId {}
+	
 }

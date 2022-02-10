@@ -20,6 +20,7 @@ import com.maif.fangfarm.api.v1.controller.PermissionController;
 import com.maif.fangfarm.api.v1.controller.StateController;
 import com.maif.fangfarm.api.v1.controller.UserGroupController;
 import com.maif.fangfarm.api.v1.controller.UsserrController;
+import com.maif.fangfarm.api.v1.controller.VehicleController;
 
 @Component
 public class MaifLinks {
@@ -168,7 +169,7 @@ public class MaifLinks {
 	}
 	
 	
-	
+	// Brand
 	public Link linkToBrand(Long brandId, String rel) {
 		return linkTo(methodOn(BrandController.class)
 				.find(brandId)).withRel(rel);
@@ -178,12 +179,30 @@ public class MaifLinks {
 		return linkToBrand(brandId, IanaLinkRelations.SELF.value());
 	}
 	
-	public Link linkToBrand(String rel) {
+	public Link linkToBrands(String rel) {
 		return linkTo(BrandController.class).withRel(rel);
 	}
 	
 	public Link linkToBrands() {
-		return linkToBrand(IanaLinkRelations.SELF.value());
+		return linkToBrands(IanaLinkRelations.SELF.value());
+	}
+	
+	// Vehicle
+	public Link linkToVehicle(Long vehicleId, String rel) {
+		return linkTo(methodOn(VehicleController.class)
+				.find(vehicleId)).withRel(rel);
+	}
+	
+	public Link linkToVehicle(Long vehicleId) {
+		return linkToVehicle(vehicleId, IanaLinkRelations.SELF.value());
+	}
+	
+	public Link linkToVehicles(String rel) {
+		return linkTo(VehicleController.class).withRel(rel);
+	}
+	
+	public Link linkToVehicles() {
+		return linkToVehicles(IanaLinkRelations.SELF.value());
 	}
 	
 }

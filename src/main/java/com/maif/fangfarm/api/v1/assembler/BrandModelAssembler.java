@@ -35,8 +35,8 @@ public class BrandModelAssembler
 		
 		modelMapper.map(brand, brandModel);
 		
-		if (maifSecurity.canConsultCities()) {
-			brandModel.add(maifLinks.linkToCities("brands"));
+		if (maifSecurity.canConsultBrands()) {
+			brandModel.add(maifLinks.linkToBrands("brands"));
 		}
 		
 		if (maifSecurity.canConsultBrands()) {
@@ -50,8 +50,8 @@ public class BrandModelAssembler
 	public CollectionModel<BrandModel> toCollectionModel(Iterable<? extends Brand> entities) {
 		CollectionModel<BrandModel> collectionModel = super.toCollectionModel(entities);
 		
-		if (maifSecurity.canConsultCities()) {
-			collectionModel.add(maifLinks.linkToCities());
+		if (maifSecurity.canConsultBrands()) {
+			collectionModel.add(maifLinks.linkToBrands());
 		}
 		
 		return collectionModel;
