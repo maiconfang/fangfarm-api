@@ -12,6 +12,7 @@ delete from oauth_client_details;
 delete from employee;
 delete from brand;
 delete from vehicle;
+delete from animal;
 
 set foreign_key_checks = 1;
 
@@ -24,6 +25,7 @@ alter table usserr auto_increment = 1;
 alter table employee auto_increment = 1;
 alter table brand auto_increment = 1;
 alter table vehicle auto_increment = 1;
+alter table animal auto_increment = 1;
 
 
 insert into permission (id, name, description) values (3, 'EDIT_CITIES', 'Allow to create or edit cities');
@@ -31,9 +33,10 @@ insert into permission (id, name, description) values (4, 'EDIT_STATES', 'Allow 
 insert into permission (id, name, description) values (5, 'CONSULT_USSERRS_GROUPS_PERMISSIONS', 'Allow to consult users, groups and permissions');
 insert into permission (id, name, description) values (6, 'EDIT_USSERRS_GROUPS_PERMISSIONS', 'Allow to create or edit users, groups and permissions');
 insert into permission (id, name, description) values (10, 'VIEW_REPORTS', 'Allow to view reports');
-insert into permission (id, name, description) values (11, 'EDIT_MODELS', 'Allow to create or edit  models');
-insert into permission (id, name, description) values (12, 'EDIT_BRANDS', 'Allow to create or edit  brands');
-insert into permission (id, name, description) values (13, 'EDIT_VEHICLES', 'Allow to create or edit  vehicles');
+insert into permission (id, name, description) values (11, 'EDIT_MODELS', 'Allow to create or edit models');
+insert into permission (id, name, description) values (12, 'EDIT_BRANDS', 'Allow to create or edit brands');
+insert into permission (id, name, description) values (13, 'EDIT_VEHICLES', 'Allow to create or edit vehicles');
+insert into permission (id, name, description) values (14, 'EDIT_ANIMALS', 'Allow to create or edit animals');
 
 
 insert into grouppp (id, name) values (1, 'Manager'), (2, 'Seller'), (3, 'Secretary'), (4, 'Register');
@@ -5762,3 +5765,5 @@ insert into employee (id, name, rg, cpf, dt_update, dt_create, address_city_id, 
 values 
 (3, 'Katia', '89.148.559-2' ,'577.863.756-00', utc_timestamp, '2020-02-01 02:20:10', 4400, '69301-410', 'Avenida Capitão Júlio Bezerra', '741', 'Em frente ao colégio', 'Centro');
 
+INSERT INTO animal (id, name, identification, sex, age, breed, dt_birthday, dt_create, dt_update) VALUES (1, 'Amora', 'MAIF-02031987', 'F', 5, 'Maine coon', '2020-02-01 02:20:10', '2019-02-01 02:20:10', '2019-02-01 02:20:10');
+INSERT INTO animal (id, name, identification, sex, age, breed, dt_birthday, dt_create, dt_update) VALUES (2, 'Thor', 'ASEF-02771987', 'M', 3, 'Dálmata', '2020-02-01 02:20:10', '2019-02-01 02:20:10', '2019-02-01 02:20:10');

@@ -121,5 +121,19 @@ public @interface CheckSecurity {
 		
 	}
 	
+	public @interface Animals {
+		
+		@PreAuthorize("hasAuthority('SCOPE_WRITE') and hasAuthority('EDIT_ANIMALS')")
+		@Retention(RUNTIME)
+		@Target(METHOD)
+		public @interface CanEdit { }
+
+		@PreAuthorize("@maifSecurity.canConsultAnimals()")
+		@Retention(RUNTIME)
+		@Target(METHOD)
+		public @interface CanConsult { }
+		
+	}
+	
 	
 }

@@ -73,4 +73,8 @@ public class MaifSecurity {
 		return isAutenticado() && hasReadingScope();
 	}
 	
+	public boolean canConsultAnimals() {
+		return isAutenticado() && hasReadingScope();
+	}
+	
 }

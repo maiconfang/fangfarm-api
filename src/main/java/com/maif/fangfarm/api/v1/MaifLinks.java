@@ -10,6 +10,7 @@ import org.springframework.hateoas.TemplateVariable.VariableType;
 import org.springframework.hateoas.TemplateVariables;
 import org.springframework.stereotype.Component;
 
+import com.maif.fangfarm.api.v1.controller.AnimalController;
 import com.maif.fangfarm.api.v1.controller.BrandController;
 import com.maif.fangfarm.api.v1.controller.CityController;
 import com.maif.fangfarm.api.v1.controller.EmployeeController;
@@ -203,6 +204,24 @@ public class MaifLinks {
 	
 	public Link linkToVehicles() {
 		return linkToVehicles(IanaLinkRelations.SELF.value());
+	}
+	
+	// Animal
+	public Link linkToAnimal(Long animalId, String rel) {
+		return linkTo(methodOn(AnimalController.class)
+				.find(animalId)).withRel(rel);
+	}
+	
+	public Link linkToAnimal(Long animalId) {
+		return linkToAnimal(animalId, IanaLinkRelations.SELF.value());
+	}
+	
+	public Link linkToAnimals(String rel) {
+		return linkTo(AnimalController.class).withRel(rel);
+	}
+	
+	public Link linkToAnimals() {
+		return linkToAnimals(IanaLinkRelations.SELF.value());
 	}
 	
 }
