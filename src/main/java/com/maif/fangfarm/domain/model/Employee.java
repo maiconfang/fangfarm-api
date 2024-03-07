@@ -38,6 +38,10 @@ public class Employee {
 	@Column(nullable = false)
 	private String cpf;
 	
+	@NotBlank
+	@Column(nullable = false)
+	private String email;
+	
 	@Embedded
 	private Address address;
 	

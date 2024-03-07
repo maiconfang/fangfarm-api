@@ -25,7 +25,11 @@ public class EmployeeInput {
 	
 	@ApiModelProperty(example = "547.942.447-22", required = true)
 	@NotBlank
-	private String cpf;
+	private String cpf; 
+	
+	@ApiModelProperty(example = "test@mail.com", required = true)
+	@NotBlank
+	private String email;
 	
 	@Valid
 	@NotNull

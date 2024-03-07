@@ -24,6 +24,9 @@ public class EmployeeModel extends RepresentationModel<EmployeeModel> {
 	@ApiModelProperty(example = "87.495.744-44")
 	private String cpf;
 	
+	@ApiModelProperty(example = "test@mail.com")
+	private String email;
+	
 	private AddressModel address;
 	
 	

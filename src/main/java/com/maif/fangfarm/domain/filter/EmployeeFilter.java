@@ -20,5 +20,8 @@ public class EmployeeFilter {
 	@ApiModelProperty(example = "548421844", value = "CPF of employee of search")
 	private String cpf;
 	
+	@ApiModelProperty(example = "test@mail.com", value = "E-Mail of employee of search")
+	private String email;
+	
 	
 }

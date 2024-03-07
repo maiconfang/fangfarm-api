@@ -128,7 +128,8 @@ public class EmployeeController implements EmployeeControllerOpenApi {
 				"id", "code",
 				"name", "name",
 				"rg", "rg",
-				"cpf", "cpf" 
+				"cpf", "cpf",
+				"email", "email"
 			);
 		
 		return PageableTranslator.translate(apiPageable, mapping);

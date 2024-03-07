@@ -5753,17 +5753,17 @@ INSERT INTO `city` (`id`, `name`, `state_id`) VALUES
 (5564, 'Xambioá', 27);
 
 
-insert into employee (id, name, rg, cpf, dt_update, dt_create, address_city_id, address_zip, address_type, address_number, address_complement, address_block) 
+insert into employee (id, name, rg, cpf, email, dt_update, dt_create, address_city_id, address_zip, address_type, address_number, address_complement, address_block) 
 values 
-(1, 'Beatriz', '19.117.826-3' ,'818.554.847-14', utc_timestamp, '2020-02-01 02:20:10', 3050, '83323-240', 'Rua Vinte e Dois de Abril', '1000', 'Próximo ao mercado', 'Centro');
+(1, 'Beatriz', '19.117.826-3' ,'818.554.847-14', 'beatriz@gmai.com', utc_timestamp, '2020-02-01 02:20:10', 3050, '83323-240', 'Rua Vinte e Dois de Abril', '1000', 'Próximo ao mercado', 'Centro');
 
-insert into employee (id, name, rg, cpf, dt_update, dt_create, address_city_id, address_zip, address_type, address_number, address_complement, address_block) 
+insert into employee (id, name, rg, cpf, email, dt_update, dt_create, address_city_id, address_zip, address_type, address_number, address_complement, address_block) 
 values 
-(2, 'Luana', '78.852.159-7' ,'386.887.195-00', utc_timestamp, '2020-02-01 02:20:10', 2904, '85852-010', 'Rua Castelo Branco', '8547', 'Shopping Estação', 'Vila Maracanã');
+(2, 'Luana', '78.852.159-7' ,'386.887.195-00', 'luana@hotmail.com', utc_timestamp, '2020-02-01 02:20:10', 2904, '85852-010', 'Rua Castelo Branco', '8547', 'Shopping Estação', 'Vila Maracanã');
 
-insert into employee (id, name, rg, cpf, dt_update, dt_create, address_city_id, address_zip, address_type, address_number, address_complement, address_block) 
+insert into employee (id, name, rg, cpf, email, dt_update, dt_create, address_city_id, address_zip, address_type, address_number, address_complement, address_block) 
 values 
-(3, 'Katia', '89.148.559-2' ,'577.863.756-00', utc_timestamp, '2020-02-01 02:20:10', 4400, '69301-410', 'Avenida Capitão Júlio Bezerra', '741', 'Em frente ao colégio', 'Centro');
+(3, 'Katia', '89.148.559-2' ,'577.863.756-00', 'katia@zip.com', utc_timestamp, '2020-02-01 02:20:10', 4400, '69301-410', 'Avenida Capitão Júlio Bezerra', '741', 'Em frente ao colégio', 'Centro');
 
 INSERT INTO animal (id, name, identification, sex, age, breed, dt_birthday, dt_create, dt_update) VALUES (1, 'Amora', 'MAIF-02031987', 'F', 5, 'Maine coon', '2020-02-01 02:20:10', '2019-02-01 02:20:10', '2019-02-01 02:20:10');
 INSERT INTO animal (id, name, identification, sex, age, breed, dt_birthday, dt_create, dt_update) VALUES (2, 'Thor', 'ASEF-02771987', 'M', 3, 'Dálmata', '2020-02-01 02:20:10', '2019-02-01 02:20:10', '2019-02-01 02:20:10');
